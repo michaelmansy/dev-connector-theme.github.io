@@ -6,6 +6,81 @@ $danger-color: #dc3545;
 $success-color: #28a745;
 $max-width: 1100px;
 
+
+//Set the color based on background
+@function set-text-color($color){
+    @if(lightness($color) > 50){
+        @return #333;
+    }@else{
+        @return #fff;
+    }
+}
+
+//Set background & text color
+@mixin set-background($color){
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+
+//=====================
+//utilities
+//=====================
+
+// Text styles
+.x-large{
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.large{
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+}
+
+.lead{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+// Backgrounds
+.bg{
+    &-primary{
+        @include set-background($primary-color);
+    }
+    &-light{
+        @include set-background($light-color);
+    }
+    &-dark{
+        @include set-background($dark-color);
+        border: #ccc 1px solid;
+    }
+    &-success{
+        @include set-background($success-color);
+    }
+    &-danger{
+        @include set-background($danger-color);
+    }
+    &-white{
+        @include set-background(#fff);
+        border: #ccc 1px solid;
+    }
+}
+
+.dark-overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+
 // ====================
 //CORE STYLING
 //=====================
@@ -59,7 +134,7 @@ img{
     }
 
     a{
-        // color: #fff;
+        color: #fff;
         padding: 0.45rem;
         margin: 0 0.25rem;
     }
@@ -68,3 +143,25 @@ img{
     }
 }
 
+
+//===============
+//LANDING AREA
+//===============
+.landing{
+    position: relative;  //so that we can use absolute with the contents
+    background: url('https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?cs=srgb&dl=code-coding-data-574071.jpg&fm=jpg') no-repeat center center/cover;
+    height: 100vh;
+
+    &-inner{
+        color: #fff;
+        height: 100%;
+        display: flex;   //everything side by side
+        flex-direction: column;   //side by side but vertically
+        width: 80%;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        //everything will get actually in the center only when we style our class dark-overlay to height of 100% (will be done in utilities)
+    }
+}
