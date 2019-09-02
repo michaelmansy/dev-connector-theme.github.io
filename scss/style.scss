@@ -55,7 +55,10 @@ $max-width: 1100px;
     margin-bottom: 1rem;
 }
 
-
+.text-primary{
+    color: $primary-color;
+}
+ 
 
 // Backgrounds
 .bg{
@@ -133,6 +136,35 @@ $max-width: 1100px;
     left: 0;
     background-color: rgba(0,0,0,0.6);
 }
+
+//Margin & Padding
+$spaceamounts: (1,2,3,4,5);
+
+@each $space in $spaceamounts{
+    //All around margin
+    .m-#{$space}{
+        margin: #{$space}rem;
+    }
+
+    //Vertical Margin
+    .my-#{$space}{
+        margin: 2rem 0;
+    }
+
+    //All around padding
+    .p-#{$space}{
+        padding: #{$space} rem;
+    }
+
+    //Vertical padding
+    .py-#{$space}{
+        padding: #{$space}rem 0;
+    }
+}
+
+//=====================
+//End of utilities
+//=====================
 
 
 // ====================
@@ -217,5 +249,33 @@ img{
         justify-content: center;
         text-align: center;
         //everything will get actually in the center only when we style our class dark-overlay to height of 100% (will be done in utilities)
+    }
+}
+
+//=====================
+//FORM IN REGISTER 
+//=====================
+.form{
+    &-group{
+        margin: 1.2rem 0;
+    }
+    &-text{
+        //put the register button on a separate line
+        display: block;
+        margin-top: 0.3rem;
+        color: #888;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='date'],
+    select,
+    textarea{
+        display: block;
+        width: 100%;
+        padding: 0.4rem;
+        font-size: 1.2rem;
+        border: 1px solid #ccc;
     }
 }
