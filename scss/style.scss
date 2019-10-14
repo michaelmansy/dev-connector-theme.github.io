@@ -469,3 +469,16 @@ img{
         }
     } 
 }
+
+
+//==================================
+// Tables in the dashboard page
+//==================================
+//spread things a little bit in the table
+.table{
+    th,
+    td {
+        padding: 1rem;
+        text-align: center;
+    }
+}
